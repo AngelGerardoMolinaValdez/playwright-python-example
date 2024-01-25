@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "playwright-python-example"
+version = "0.1.0"
+description = "Scripts automatizados e2e con Playwright con Python"
+authors = ["Angel Gerardo Molina Valdez <angelgerardomolinavaldez@gmail.com>"]
+readme = "readme.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.test.dependencies]
+behave = "^1.2.6"
+pytest = "^7.4.4"
+pytest-playwright = "^0.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

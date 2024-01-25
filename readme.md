@@ -41,17 +41,28 @@ Además, permite integración con sistemas de CI/CD como Jenkins, GitLab CI, etc
 | Comunidad y Soporte       | En crecimiento                            | Fuerte                         | Establecida                 | Fuerte                       | Muy fuerte                      |
 | Lanzamiento               | 2020                                      | 2017                           | 2005                        | 2017                         | 2004                            |
 
-## Instalación 📦
+## ☑️ Requisitos
 
-Es necesario tener instalado [Python](https://www.python.org/downloads/) en tu sistema para continuar con los siguientes pasos.
+Para que este proyecto funcione necesitamos:
 
-Una vez instalado python debemos instalar la extensión de Playwright:
+- [Python](https://www.python.org/downloads/) (>=3.11)
+- Tu navegador favorito como: [GoogleChrome](https://www.google.com/intl/es-419/chrome/), [FireFox](https://www.mozilla.org/es-MX/firefox/new/), etc
 
-`pip install pytest-playwright`
+## 🔗 Instalación
+
+Los módulos que usamos en este proyecto los gestionamos con [Poetry](https://python-poetry.org/), para instalarlo ejecutaremos el comando:
+
+- `pip install poetry==1.7.1`
+
+Hecho esto, podremos instalar las dependencias para ejecución:
+
+- `poetry install`
+
+## ⚙ Configuración
 
 Ya instalado, hay que instalar las dependencias de los navegadores necesarios con el comando:
 
-`playwright install`
+- `playwright install`
 
 [Consulta la información aquí](https://playwright.dev/python/docs/intro#installing-playwright)
 
@@ -59,7 +70,8 @@ Ya instalado, hay que instalar las dependencias de los navegadores necesarios co
 
 Una ejecución simple se puede hacer con el comando:
 
-`pytest`
+- `poetry run pytest`
+- `poetry run behave`
 
 Al no especificar navegador, Playwright tomará por defecto Chrome.
 
