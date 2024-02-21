@@ -6,7 +6,7 @@ authors = ["Angel Gerardo Molina Valdez <angelgerardomolinavaldez@gmail.com>"]
 readme = "readme.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.9"
 
 
 [tool.poetry.group.test.dependencies]
