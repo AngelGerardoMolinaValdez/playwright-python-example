@@ -16,3 +16,13 @@ class DataTableCreator:
             datatables.append(DataTable(**testdata_row))
 
         return datatables
+    
+    @staticmethod
+    def create_table(reader: AbstractDataReader, data_dir_content: DataDirContent, index: int) -> dataclass:
+        """Create a DataTable from the CSV file."""
+        data_file_path: str = data_dir_content.get_content()
+
+        testdata_row = reader.read(data_file_path)[index]
+        DataTable: dataclass = make_dataclass("DataTable", testdata_row.keys())
+
+        return DataTable(**testdata_row)

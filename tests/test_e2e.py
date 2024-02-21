@@ -23,10 +23,14 @@ def test_open_new_account(datatable: dataclass, login, page: Page) -> None:
 
 def test_account_overview(login, page: Page) -> None:
     """Test the account overview page in Parabank."""
+    dt = DataTableCreator.create_table(CSVDataReader, DataDirContent("account.csv"), 0)
+
     account_overview = AccountOverviewKeywords(page)
-    account_overview.open_account_overview("13344")
+    account_overview.open_account_overview(dt.account_reference)
 
 def test_transfer_funds(login, page: Page) -> None:
     """Test transferring funds in Parabank."""
+    dt = DataTableCreator.create_table(CSVDataReader, DataDirContent("account.csv"), 0)
+
     transfer_funds = TransferFundsKeywords(page)
-    transfer_funds.transfer_funds("100", "13344", "13344")
+    transfer_funds.transfer_funds("100", dt.account_reference, dt.account_reference)
