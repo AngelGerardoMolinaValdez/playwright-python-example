@@ -4,6 +4,9 @@ from keywords.create_new_account_keywords import CreateNewAccountKeywords
 from keywords.account_overview_keywords import AccountOverviewKeywords
 from keywords.transfer_funds_keywords import TransferFundsKeywords
 import pytest
+from utils.data_table_creator import DataTableCreator
+from utils.csv_data_reader import CSVDataReader
+from dataclasses import dataclass
 
 @pytest.fixture
 def login(page: Page) -> None:
@@ -11,10 +14,11 @@ def login(page: Page) -> None:
     login = LoginKeywords(page)
     login.login_in_to_the_application()
 
-def test_open_new_account(login, page: Page) -> None:
+@pytest.mark.parametrize("datatable", DataTableCreator.create_table(CSVDataReader, "account.csv"))
+def test_open_new_account(datatable: dataclass, login, page: Page) -> None:
     """Test opening a new account in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
-    create_new_account.create_new_account("SAVINGS", "13344")
+    create_new_account.create_new_account(datatable.account_type, datatable.account_reference)
 
 def test_account_overview(login, page: Page) -> None:
     """Test the account overview page in Parabank."""
