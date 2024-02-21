@@ -6,6 +6,7 @@ from keywords.transfer_funds_keywords import TransferFundsKeywords
 import pytest
 from utils.data_table_creator import DataTableCreator
 from utils.csv_data_reader import CSVDataReader
+from utils.data_dir_content import DataDirContent
 from dataclasses import dataclass
 
 @pytest.fixture
@@ -14,7 +15,7 @@ def login(page: Page) -> None:
     login = LoginKeywords(page)
     login.login_in_to_the_application()
 
-@pytest.mark.parametrize("datatable", DataTableCreator.create_tables(CSVDataReader, "account.csv"))
+@pytest.mark.parametrize("datatable", DataTableCreator.create_tables(CSVDataReader, DataDirContent("account.csv")))
 def test_open_new_account(datatable: dataclass, login, page: Page) -> None:
     """Test opening a new account in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
