@@ -27,10 +27,12 @@ class CreateNewAccountPage:
         """Select the existing account from the dropdown."""
         self.page.locator(self.initial_deposit).select_option(account_id)
     
-    def open_new_account(self) -> None:
-        """Click on the Open New Account button."""
+    def open_new_account(self) -> str:
+        """Click on the Open New Account button and return the account id."""
         self.page.locator(self.open_new_account_button).click()
         self.__new_account_should_be_opened()
+        account_id = self.page.locator("#newAccountId").inner_text()
+        return account_id
     
     def __new_account_should_be_opened(self) -> bool:
         """Check if the new account was opened."""

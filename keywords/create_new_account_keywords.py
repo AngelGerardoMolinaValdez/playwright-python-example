@@ -8,9 +8,10 @@ class CreateNewAccountKeywords:
         """Initialize the CreateNewAccountKeywords object."""
         self.create_new_account_page = CreateNewAccountPage(page)
 
-    def create_new_account(self, account_type: str, account_id: str) -> None:
+    def create_new_account(self, account_type: str, account_id: str) -> str:
         """Create a new account using the provided account type and account id."""
         self.create_new_account_page.select_option()
         self.create_new_account_page.select_account_type(account_type)
         self.create_new_account_page.select_existing_account(account_id)
-        self.create_new_account_page.open_new_account()
+        account_id = self.create_new_account_page.open_new_account()
+        return account_id

@@ -14,26 +14,26 @@ def login(page: Page) -> None:
 def test_open_new_account_and_transfer_funds(login, page: Page) -> None:
     """Test opening a new account and transferring funds in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
-    create_new_account.create_new_account("SAVINGS", "13344")
+    new_account = create_new_account.create_new_account("SAVINGS", "13344")
 
     transfer_funds = TransferFundsKeywords(page)
-    transfer_funds.transfer_funds("100", "13344", "13344")
+    transfer_funds.transfer_funds("100", "13344", new_account)
 
 def test_open_account_and_view_overview(login, page: Page) -> None:
     """Test opening an account and viewing the account overview in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
-    create_new_account.create_new_account("SAVINGS", "13344")
+    new_account = create_new_account.create_new_account("SAVINGS", "13344")
 
     account_overview = AccountOverviewKeywords(page)
-    account_overview.open_account_overview("13344")
+    account_overview.open_account_overview(new_account)
 
 def test_open_new_account_transfer_funds_and_view_overview(login, page: Page) -> None:
     """Test opening a new account, transferring funds, and viewing the account overview in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
-    create_new_account.create_new_account("SAVINGS", "13344")
+    new_account = create_new_account.create_new_account("SAVINGS", "13344")
 
     transfer_funds = TransferFundsKeywords(page)
-    transfer_funds.transfer_funds("100", "13344", "13344")
+    transfer_funds.transfer_funds("100", "13344", new_account)
 
     account_overview = AccountOverviewKeywords(page)
-    account_overview.open_account_overview("13344")
+    account_overview.open_account_overview(new_account)
