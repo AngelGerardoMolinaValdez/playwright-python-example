@@ -4,7 +4,7 @@ from utils.abstract_data_reader import AbstractDataReader
 
 class DataTableCreator:
     @staticmethod
-    def create_table(reader: AbstractDataReader, source: str) -> list[dataclass]:
+    def create_tables(reader: AbstractDataReader, source: str) -> list[dataclass]:
         """Create a DataTable from the CSV file."""
         cd = os.path.dirname(__file__)
         data_dir = os.path.join(cd, "..", "data")

@@ -14,7 +14,7 @@ def login(page: Page) -> None:
     login = LoginKeywords(page)
     login.login_in_to_the_application()
 
-@pytest.mark.parametrize("datatable", DataTableCreator.create_table(CSVDataReader, "account.csv"))
+@pytest.mark.parametrize("datatable", DataTableCreator.create_tables(CSVDataReader, "account.csv"))
 def test_open_new_account(datatable: dataclass, login, page: Page) -> None:
     """Test opening a new account in Parabank."""
     create_new_account = CreateNewAccountKeywords(page)
